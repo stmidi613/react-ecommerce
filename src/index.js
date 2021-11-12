@@ -4,8 +4,8 @@ import "jquery";
 import "@popperjs/core";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import {NavBar} from "./App";
 import "./index.css";
+import App from "./App";
 
-ReactDOM.render(<NavBar />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
 
