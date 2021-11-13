@@ -10,11 +10,29 @@ export default class MainContent extends Component {
         name: "Steve",
         phone: "555 - 5555",
         address: { city: "London" },
+        photo: "https://picsum.photos/id/1012/60",
       },
-      { id: 2, name: "Mike", phone: "555 - 5555", address: { city: "Berlin" } },
-      { id: 3, name: "Henry", phone: null, address: { city: "New York" } },
+      { id: 2, 
+        name: "Mike", 
+        phone: "555 - 5555", 
+        address: { city: "Berlin" }, 
+        photo: "https://picsum.photos/id/1013/60",
+
+      },
+      { id: 3, 
+        name: "Henry", 
+        phone: null, 
+        address: { city: "New York" }, 
+        photo: "https://picsum.photos/id/1014/60",
+      },
     ],
   };
+
+  customerNameStyle = (custName) => {
+    if(custName.startsWith("S"))return "green-highlight border-left";
+    else if(custName.startsWith("M"))return "red-highlight border-right";
+    else return "";
+  }
 
   render() {
     return (
@@ -35,8 +53,10 @@ export default class MainContent extends Component {
           <thead>
             <tr>
               <th>#</th>
+              <th>Photo</th>
               <th>Customer Name</th>
               <th>Phone</th>
+              <th>City</th>
             </tr>
           </thead>
           <tbody>
@@ -44,7 +64,8 @@ export default class MainContent extends Component {
               return (
                 <tr key={cust.id}>
                   <td>{cust.id}</td>
-                  <td>{cust.name}</td>
+                  <td><img src={cust.photo} alt="customer photo"></img></td>
+                  <td className={ this.customerNameStyle(cust.name) }>{cust.name}</td>
                   <td>
                     {cust.phone ? (
                       cust.phone
