@@ -28,12 +28,6 @@ export default class MainContent extends Component {
     ],
   };
 
-  customerNameStyle = (custName) => {
-    if(custName.startsWith("S"))return "green-highlight border-left";
-    else if(custName.startsWith("M"))return "red-highlight border-right";
-    else return "";
-  }
-
   render() {
     return (
       <div>
@@ -60,12 +54,20 @@ export default class MainContent extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.customers.map((cust) => {
+          
+          {this.state.customers.map((cust, index) => {
               return (
                 <tr key={cust.id}>
                   <td>{cust.id}</td>
-                  <td><img src={cust.photo} alt="customer photo"></img></td>
-                  <td className={ this.customerNameStyle(cust.name) }>{cust.name}</td>
+                  <td><img src={cust.photo} alt="Customer" />
+                  <div>
+                    <button className="btn btn-sm btn-secondary" onClick={ 
+                      () => { this.onChangePictureClick(cust, index);}}>
+                      Change Picture
+                    </button>
+                  </div>
+                  </td>
+                  <td>{cust.name}</td>
                   <td>
                     {cust.phone ? (
                       cust.phone
@@ -83,6 +85,16 @@ export default class MainContent extends Component {
     );
   }
 
+  //Executes when the user clicks on "Change Picture" button in the grid
+  //Receives the "customer" object and index of the currently clicked customer
+  onChangePictureClick = (cust, index) => {
+
+    //get existing customers
+    var custArr = this.state.customers;
+    custArr[index].photo="https://picsum.photos/id/104/60";
+    this.setState({ customers: custArr });
+  }
+ 
   //Executes when the user clicks on Refresh button.
   onRefreshClick = () => {
     this.setState({ customersCount: 7 });
