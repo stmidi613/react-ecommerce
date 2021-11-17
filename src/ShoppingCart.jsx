@@ -4,8 +4,9 @@ import Product from "./Product";
 export default class ShoppingCart extends Component {
   //executes when the component is mounted
   constructor(props) {
-    super(props); //calling super class' constructor
-    
+    //console.log("constructor - ShoppingCart")
+    super(props); //calling super class' constructor or the Component Class
+   
     //intialization of the state
     this.state = {
       products: [
@@ -20,6 +21,7 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
+    //console.log("render - ShoppingCart")
     return (
       <div className="container-fluid">
         <h4>Shopping Cart</h4>
@@ -43,6 +45,34 @@ export default class ShoppingCart extends Component {
     );
   }
   //render ends here
+
+  //Executes after constructor and render method executes
+  componentDidMount(){
+   // console.log("componentDidMount - ShoppingCart")
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log("componentDidUpdate - ShoppingCart",
+    prevProps,
+    prevState,
+    this.props,
+    this.state);
+
+  //  if(prevProps.x != this.props.x){
+      //make http call
+    //}
+  }
+
+  componentWillUnmount(){
+    //console.log("componentWillUnMount - Product");
+  }
+
+  componentDidCatch(error, info){
+    //console.log("componentDidCatch - ShoppinCart");
+    //console.log(error, info);
+
+    localStorage.lastError = `${error}\n${JSON.stringify(info)}`;
+  }
 
   //increments the number of products when user clicks + button
   handleIncrement = (product, maxValue) => {
