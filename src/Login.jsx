@@ -38,7 +38,7 @@ export default class Login extends Component {
         </div>
         {/*Password ends*/}
 
-        <div className="text-right m-1">
+        <div className="pull-right m-1">
           {this.state.message}  
           <button className="btn btn-primary m-2" onClick={this.onLoginClick}>
             Login
@@ -62,10 +62,9 @@ export default class Login extends Component {
     });
     } else {
       //error
-      this.setSate({
+      this.setState({
         message: 
-          <span className="text-danger">Invalid Log-in, please try again.</span>
-        
+          <span className="text-danger">Invalid Log-in, please try again.</span> 
       });
     }
   };

@@ -6,17 +6,10 @@ export default class ShoppingCart extends Component {
   constructor(props) {
     //console.log("constructor - ShoppingCart")
     super(props); //calling super class' constructor or the Component Class
-   
+
     //intialization of the state
     this.state = {
-      products: [
-        { id: 1, productName: "iPhone", price: 8900, quantity: 0 },
-        { id: 2, productName: "Sony Camera", price: 8700, quantity: 0 },
-        { id: 3, productName: "iPad", price: 4300, quantity: 0 },
-        { id: 4, productName: "Samsung TV", price: 3700, quantity: 0 },
-        { id: 5, productName: "XBox", price: 1200, quantity: 0 },
-        { id: 6, productName: "Dell Monitor", price: 900, quantity: 0 },
-      ],
+      products: [],
     };
   }
 
@@ -47,27 +40,35 @@ export default class ShoppingCart extends Component {
   //render ends here
 
   //Executes after constructor and render method executes
-  componentDidMount(){
-   // console.log("componentDidMount - ShoppingCart")
-  }
+  componentDidMount = async () => {
+    //fetch data from data source
+    var response = await fetch("react-db.json", {
+      method: "Get",
+    });
+    var prods = await response.json();
 
-  componentDidUpdate(prevProps, prevState){
-    console.log("componentDidUpdate - ShoppingCart",
-    prevProps,
-    prevState,
-    this.props,
-    this.state);
+    this.setState({ products: prods });
+  };
 
-  //  if(prevProps.x != this.props.x){
-      //make http call
+  componentDidUpdate(prevProps, prevState) {
+    console.log(
+      "componentDidUpdate - ShoppingCart",
+      prevProps,
+      prevState,
+      this.props,
+      this.state
+    );
+
+    //  if(prevProps.x != this.props.x){
+    //make http call
     //}
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     //console.log("componentWillUnMount - Product");
   }
 
-  componentDidCatch(error, info){
+  componentDidCatch(error, info) {
     //console.log("componentDidCatch - ShoppinCart");
     //console.log(error, info);
 
