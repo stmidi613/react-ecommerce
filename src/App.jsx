@@ -4,7 +4,6 @@ import Dashboard from "./Dashboard";
 import Login from "./Login";
 import ShoppingCart from "./ShoppingCart";
 import CustomerList from "./CustomerList";
-//import { Route } from "react-router";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NoMatchPage from "./NoMatchPage";
 

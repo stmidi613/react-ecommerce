@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import axios from "axios";
 
 export default class ShoppingCart extends Component {
   //executes when the component is mounted
@@ -40,15 +41,13 @@ export default class ShoppingCart extends Component {
   //render ends here
 
   //Executes after constructor and render method executes
-  componentDidMount = async () => {
+  componentDidMount() {
     //fetch data from data source
-    var response = await fetch("react-db.json", {
-      method: "Get",
+    axios.get("https://fakestoreapi.com/products?limit=5").then((res) => {
+      console.log(res);
+      this.setState({ products: res.data });
     });
-    var prods = await response.json();
-
-    this.setState({ products: prods });
-  };
+  }
 
   componentDidUpdate(prevProps, prevState) {
     console.log(

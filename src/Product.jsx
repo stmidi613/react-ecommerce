@@ -28,9 +28,15 @@ console.log("constructor - product")
             </div>
 
             <h5 className="pt-2 border-top">
-              {this.state.product.productName}
+              {this.state.product.title}
             </h5>
 
+            <h5 className="pt-2 description maxw">
+              {this.state.product.description}
+            </h5>
+                
+            <img src={this.state.product.image} className="img-thumbnail float-end image" alt="" />
+            
             <div>${this.state.product.price}</div>
           </div>
           {/* card body ends here */}
@@ -38,7 +44,7 @@ console.log("constructor - product")
           <div className="card-footer">
             <div className="float-left">
               <span className="badge text-black">
-                {this.state.product.quantity}
+                {this.state.product.quantity}0
               </span>
 
               <div className="btn-group">
@@ -63,7 +69,7 @@ console.log("constructor - product")
             </div>
             {/* float left ends here */}
 
-            <div className="pull-right m-1">{this.props.children}</div>
+            <div className="float-end m-1">{this.props.children}</div>
           </div>
           {/* card footer ends here */}
         </div>

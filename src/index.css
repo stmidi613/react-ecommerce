@@ -19,3 +19,16 @@
 .hand-icon{
     cursor: pointer;
 }
+
+.description{
+    font-size: 10px !important;
+}
+
+.image{
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.maxw{
+    max-width: 350px;
+}
