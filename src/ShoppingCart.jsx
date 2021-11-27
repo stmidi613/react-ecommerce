@@ -43,10 +43,14 @@ export default class ShoppingCart extends Component {
   //Executes after constructor and render method executes
   componentDidMount() {
     //fetch data from data source
-    axios.get("https://fakestoreapi.com/products?limit=5").then((res) => {
-      console.log(res);
-      this.setState({ products: res.data });
-    });
+    axios
+      .get("https://fakestoreapi.com/products?limit=5")
+      .then((res) => {
+        res.data.forEach(product => product.quantity = 0);
+        console.log(res);
+        this.setState({ products: res.data })
+      });
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -57,15 +61,9 @@ export default class ShoppingCart extends Component {
       this.props,
       this.state
     );
-
-    //  if(prevProps.x != this.props.x){
-    //make http call
-    //}
   }
 
-  componentWillUnmount() {
-    //console.log("componentWillUnMount - Product");
-  }
+  
 
   componentDidCatch(error, info) {
     //console.log("componentDidCatch - ShoppinCart");
@@ -78,8 +76,11 @@ export default class ShoppingCart extends Component {
   handleIncrement = (product, maxValue) => {
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product);
-    if (allProducts[index].quantity < maxValue) {
+    console.log("function-")
+    console.log(product)
+   if (allProducts[index].quantity < maxValue) {
       allProducts[index].quantity++;
+      console.log(product)
 
       this.setState({ products: allProducts });
     }

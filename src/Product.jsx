@@ -42,17 +42,16 @@ console.log("constructor - product")
           {/* card body ends here */}
 
           <div className="card-footer">
-            <div className="float-left">
+            <div className="float-start">
               <span className="badge text-black">
-                {this.state.product.quantity}0
+                {this.state.product.quantity}
               </span>
 
               <div className="btn-group">
                 <button
                   className="btn btn-outline-success"
                   onClick={() => {
-                    this.props.onIncrement(this.state.product, 10);
-                  }}
+                    this.props.onIncrement(this.state.product, 10);                  }}
                 >
                   +
                 </button>
